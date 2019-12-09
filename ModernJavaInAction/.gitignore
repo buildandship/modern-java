@@ -1,6 +1,6 @@
 /target
 /local
-/book
+
 # Eclipse, Netbeans and IntelliJ files
 /.*
 !.gitignore
