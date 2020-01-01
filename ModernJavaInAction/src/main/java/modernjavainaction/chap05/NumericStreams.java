@@ -36,6 +36,7 @@ public class NumericStreams {
       max = 1;
     }
     System.out.println(max);
+    max = maxCalories.orElse(1);
 
     // numeric ranges
     IntStream evenNumbers = IntStream.rangeClosed(1, 100)

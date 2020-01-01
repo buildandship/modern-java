@@ -28,6 +28,11 @@ public class Reducing {
         .map(Dish::getCalories)
         .reduce(0, Integer::sum);
     System.out.println("Number of calories:" + calories);
+
+    int count = menu.stream()
+            .map(d -> 1)
+            .reduce(0, (a, b) -> a + b);
+    System.out.println("Count of dishes: "+count);
   }
 
 }

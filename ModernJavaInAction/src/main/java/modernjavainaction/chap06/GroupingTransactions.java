@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class GroupingTransactions {
 
@@ -28,7 +29,10 @@ public class GroupingTransactions {
 
   public static void main(String... args) {
     groupImperatively();
+    System.out.println("\n");
     groupFunctionally();
+    System.out.println("\n");
+    myGroupFunctionally();
   }
 
   private static void groupImperatively() {
@@ -51,6 +55,14 @@ public class GroupingTransactions {
         .collect(groupingBy(Transaction::getCurrency));
     System.out.println(transactionsByCurrencies);
   }
+
+  private static void myGroupFunctionally(){
+    Map<Currency, List<Transaction>> transactionsByCurrencies =
+            transactions.stream()
+                        .collect(Collectors.groupingBy(Transaction::getCurrency));
+    System.out.println(transactionsByCurrencies);
+  }
+
 
   public static class Transaction {
 
@@ -78,7 +90,7 @@ public class GroupingTransactions {
   }
 
   public enum Currency {
-    EUR, USD, JPY, GBP, CHF
+    EUR, USD, JPY, GBP, CHF, INR
   }
 
 }
