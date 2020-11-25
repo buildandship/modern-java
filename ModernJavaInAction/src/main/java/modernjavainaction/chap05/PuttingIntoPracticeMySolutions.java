@@ -45,8 +45,8 @@ public class PuttingIntoPracticeMySolutions {
                 .filter(t->t.getCity().equalsIgnoreCase("Cambridge"))
                 .distinct()
                 .sorted(Comparator.comparing(Trader::getName))
-                .collect(Collectors.toList()).forEach(System.out::println);
-                //.forEach(System.out::println);
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
 
     // Query 4: Return a string of all traders' names sorted alphabetically.
     System.out.println("Query 4: ");

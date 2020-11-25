@@ -45,8 +45,8 @@ public class Finding {
   }
 
   private static Optional<Dish> findVegetarianDish() {
-    return menu.stream().filter(Dish::isVegetarian).findAny();
-    //return menu.stream().filter(Dish::isVegetarian).findFirst();
+    //return menu.stream().filter(Dish::isVegetarian).findAny();
+    return menu.stream().filter(Dish::isVegetarian).findFirst();
     //return menu.parallelStream().filter(Dish::isVegetarian).findAny();
     //return menu.parallelStream().filter(Dish::isVegetarian).findFirst();
   }

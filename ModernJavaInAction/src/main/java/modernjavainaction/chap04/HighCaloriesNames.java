@@ -21,5 +21,4 @@ public class HighCaloriesNames {
         .collect(toList());
     System.out.println(names);
   }
-
 }

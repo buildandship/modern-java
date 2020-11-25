@@ -23,8 +23,7 @@ public class WordCount {
     for (char c : s.toCharArray()) {
       if (Character.isWhitespace(c)) {
         lastSpace = true;
-      }
-      else {
+      } else {
         if (lastSpace) {
           counter++;
         }

@@ -5,6 +5,7 @@ import static modernjavainaction.chap04.Dish.menu;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import modernjavainaction.chap04.Dish;
 
@@ -40,6 +41,31 @@ public class Mapping{
         .filter(pair -> (pair[0] + pair[1]) % 3 == 0)
         .collect(toList());
     pairs.forEach(pair -> System.out.printf("(%d, %d)", pair[0], pair[1]));
+  
+    System.out.println("\n Further examples");
+    // Further examples
+    String[] arrayOfWords = {"Goodbye", "World"};
+    Stream<String> streamOfwords = Arrays.stream(arrayOfWords);
+  
+    List<Stream<String>> streamList = words.stream()
+            .map(word -> word.split(""))
+            .map(Arrays::stream)
+            .distinct()
+            .collect(toList());
+    //The current solution still doesn’t work! This is because you now end up with a list of
+    //streams (more precisely, List<Stream<String>>).
+  
+  
+    List<String> uniqueCharacters =
+            words.stream()
+                    .map(word -> word.split("")) //Converts each word into an array of its individual letters
+                    .flatMap(Arrays::stream)//Flattens each generated stream into a single stream
+                    .distinct()
+                    .collect(toList());
+    // Count unique characters from List of strings
+    System.out.println(words.stream().map(word -> word.split("")).flatMap(Arrays::stream).distinct().count());
+    System.out.println(uniqueCharacters);
+    
+    //
   }
-
 }

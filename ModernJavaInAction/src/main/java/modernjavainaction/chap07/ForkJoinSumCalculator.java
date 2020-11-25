@@ -5,7 +5,10 @@ import static modernjavainaction.chap07.ParallelStreamsHarness.FORK_JOIN_POOL;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveTask;
 import java.util.stream.LongStream;
-
+/**
+ *
+ * https://www.youtube.com/watch?v=5wgZYyvIVJk
+ */
 public class ForkJoinSumCalculator extends RecursiveTask<Long> {
 
   public static final long THRESHOLD = 10_000;
@@ -33,6 +36,8 @@ public class ForkJoinSumCalculator extends RecursiveTask<Long> {
     ForkJoinSumCalculator leftTask = new ForkJoinSumCalculator(numbers, start, start + length / 2);
     leftTask.fork();
     ForkJoinSumCalculator rightTask = new ForkJoinSumCalculator(numbers, start + length / 2, end);
+    //rightTask.fork();
+
     Long rightResult = rightTask.compute();
     Long leftResult = leftTask.join();
     return leftResult + rightResult;
